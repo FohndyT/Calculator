@@ -1,8 +1,6 @@
 # Pour que import marche :
 #   1. Ouvrir le terminal de ce projet pis ecrire : pip install customtkinter
 #   2. Ecrire apres : pip install packaging
-# Pour mettre à jour : pip install customtkinter --upgrade
-
 
 
 # Import
@@ -14,17 +12,16 @@ calculationText = ""
 storedValues = []
 indexStoredValues = len(storedValues) - 2
 
-# Setting the theme
+# Theme
 customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("dark-blue")
 
-# Creating the window
+# Create the window
 window = customtkinter.CTk()
 window.title("Calculator")
 window.geometry("400x475")
 window.resizable(width=False, height=False) # Empeche l'utilisateur de changer la taille de la fenetre
 
-# Esthetic
 frame = customtkinter.CTkFrame(master=window)
 frame.pack(pady = 20, padx = 20, fill = "both", expand = True)
 
@@ -44,6 +41,7 @@ def calculate() :
     except :
         screenFrame.configure(text = "Error")
 
+# Clear the screen
 def clear() :
     global calculationText
     global indexStoredValues
@@ -53,12 +51,13 @@ def clear() :
 
     indexStoredValues = len(storedValues) - 1 #Maybe fix
 
+# Delete a character
 def delete() :
     global calculationText
     calculationText = calculationText[:-1]
     screenFrame.configure(text = calculationText)
 
-# Not working
+# Returns the last evaluated operation
 def back() :
     global indexStoredValues
     global calculationText
@@ -73,9 +72,11 @@ def back() :
 
     indexStoredValues -= 1
 
+# Close the window
 def endProgram() :
     window.quit()
 
+# Show the largest number that fits on the screen
 def maxNumber() :
     calculationText = "99999999999999999999999999"
     screenFrame.configure(text=calculationText)
@@ -92,7 +93,7 @@ screenFrame = customtkinter.CTkLabel(master = frame,
                                      justify = "right")
 screenFrame.place(relx = 0.5, rely = 0.15, anchor = tkinter.CENTER)
 
-# Premiere range
+# First row
 buttonEnd = customtkinter.CTkButton(master = frame, text = "End", fg_color = "red", width = 60, height = 10, command = lambda : endProgram())
 buttonEnd.place(relx = 0.165, rely = 0.3, anchor = tkinter.CENTER)
 buttonBack = customtkinter.CTkButton(master = frame, text = "Back", fg_color = "dark blue", width = 60, height = 10, command = lambda : back())
@@ -102,7 +103,7 @@ buttonDel.place(relx = 0.6116, rely = 0.3, anchor = tkinter.CENTER)
 buttonClear = customtkinter.CTkButton(master = frame, text = "Clear", fg_color = "dark grey", width = 60, height = 10, command = lambda : clear())
 buttonClear.place(relx = 0.835, rely = 0.3, anchor = tkinter.CENTER)
 
-# Deuxieme range
+# Second row
 button7 = customtkinter.CTkButton(master = frame, text = "7", fg_color = "grey", width = 50, height = 10, command = lambda : showElement(7))
 button7.place(relx = 0.1455, rely = 0.4, anchor = tkinter.CENTER)
 button8 = customtkinter.CTkButton(master = frame, text = "8", fg_color = "grey", width = 50, height = 10, command = lambda : showElement(8))
@@ -115,7 +116,7 @@ buttonParaRight.place(relx = 0.671875, rely = 0.4, anchor = tkinter.CENTER)
 buttonParaLeft = customtkinter.CTkButton(master = frame, text = " ) ", fg_color = "blue", width = 50, height = 10, command = lambda : showElement(" ) "))
 buttonParaLeft.place(relx = 0.85, rely = 0.4, anchor = tkinter.CENTER)
 
-# Troisieme range
+# Third row
 button4 = customtkinter.CTkButton(master = frame, text = "4", fg_color = "grey", width = 50, height = 10, command = lambda : showElement(4))
 button4.place(relx = 0.1455, rely = 0.5, anchor = tkinter.CENTER)
 button5 = customtkinter.CTkButton(master = frame, text = "5", fg_color = "grey", width = 50, height = 10, command = lambda : showElement(5))
@@ -128,7 +129,7 @@ buttonPlus.place(relx = 0.671875, rely = 0.5, anchor = tkinter.CENTER)
 buttonMinus = customtkinter.CTkButton(master = frame, text = " - ", fg_color = "blue", width = 50, height = 10, command = lambda : showElement(" - "))
 buttonMinus.place(relx = 0.85, rely = 0.5, anchor = tkinter.CENTER)
 
-# Quatrieme range
+# Fourth row
 button1 = customtkinter.CTkButton(master = frame, text = "1", fg_color = "grey", width = 50, height = 10, command = lambda : showElement(1))
 button1.place(relx = 0.1455, rely = 0.6, anchor = tkinter.CENTER)
 button2 = customtkinter.CTkButton(master = frame, text = "2", fg_color = "grey", width = 50, height = 10, command = lambda : showElement(2))
@@ -141,7 +142,7 @@ buttonTimes.place(relx = 0.671875, rely = 0.6, anchor = tkinter.CENTER)
 buttonDivide = customtkinter.CTkButton(master = frame, text = " / ", fg_color = "blue", width = 50, height = 10, command = lambda : showElement(" / "))
 buttonDivide.place(relx = 0.85, rely = 0.6, anchor = tkinter.CENTER)
 
-# Cinquieme range
+# fifth row
 button0 = customtkinter.CTkButton(master = frame, text = "0", fg_color = "grey", width = 50, height = 10, command = lambda : showElement(0))
 button0.place(relx = 0.1455, rely = 0.7, anchor = tkinter.CENTER)
 
